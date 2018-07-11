@@ -1,0 +1,6 @@
+#!/bin/bash
+VERSION=__VERSION__
+
+echo Stopping Factorio server.
+docker stop doctorio-headless-$VERSION
+echo Done.

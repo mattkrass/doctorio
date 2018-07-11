@@ -1,0 +1,7 @@
+*.xz
+start_server.sh
+stop_server.sh
+*.log
+*.swp
+factorio.version
+

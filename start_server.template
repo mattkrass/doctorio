@@ -1,0 +1,11 @@
+#!/bin/bash
+VERSION=__VERSION__
+SAVE_PATH=${SAVE_PATH:-__SAVE_PATH__}
+PORT=${PORT:-__PORT__}
+
+echo Starting Factorio server.
+docker run --rm -d -v "$SAVE_PATH":/opt/factorio/saves \
+    -p $PORT:34197/udp \
+    --name doctorio-headless-$VERSION \
+    doctorio:$VERSION
+echo Done.
