@@ -3,10 +3,10 @@ DEFAULT_PORT?=34197
 OS := $(shell uname)
 ifeq ($(OS),Darwin)
 	DEFAULT_SAVE?=$(HOME)/Library/Application\ Support/factorio/saves
-	DEFAULT_DATA?=$(HOME)/Library/Application\ Support/factorio/data
+	DEFAULT_CFG?=$(HOME)/Library/Application\ Support/factorio/cfg
 else
 	DEFAULT_SAVE?=$(HOME)/.factorio/saves
-	DEFAULT_DATA?=$(HOME)/.factorio/data
+	DEFAULT_CFG?=$(HOME)/.factorio/cfg
 endif
 
 all: build scripts
@@ -26,7 +26,7 @@ start_server.sh:
 	@cp start_server.template start_server.sh
 	@sed -i.dummy "s|__VERSION__|$$(cat factorio.version)|" start_server.sh
 	@sed -i.dummy "s|__SAVE_PATH__|$(DEFAULT_SAVE)|" start_server.sh
-	@sed -i.dummy "s|__DATA_PATH__|$(DEFAULT_DATA)|" start_server.sh
+	@sed -i.dummy "s|__CFG_PATH__|$(DEFAULT_CFG)|" start_server.sh
 	@sed -i.dummy "s|__PORT__|$(DEFAULT_PORT)|" start_server.sh
 	@rm start_server.sh.dummy
 	@chmod +x start_server.sh
